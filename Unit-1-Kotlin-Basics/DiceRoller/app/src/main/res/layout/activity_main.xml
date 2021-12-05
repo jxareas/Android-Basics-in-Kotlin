@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    android:layout_marginBottom="@dimen/margin_standard"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view_dice"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:src="@drawable/dice_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_view_dice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_roll_dice"
+        tools:text="1"
+        android:textSize="@dimen/text_size_standard"
+        android:gravity="end"
+        android:layout_marginEnd="@dimen/margin_half"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margin_half"
+        />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_view_rolled_dice"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/text_view_dice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Rolled Diced"
+        android:textAllCaps="true"
+        android:gravity="end"
+        android:layout_marginEnd="@dimen/margin_half"
+        android:fontFamily="@font/palanquin_thin"
+        android:textSize="@dimen/text_size_small"
+
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_roll_dice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:fontFamily="@font/palanquin_thin"
+        android:textSize="@dimen/text_size_standard"
+        android:backgroundTint="?attr/colorPrimary"
+        android:text="@string/roll"
+        android:layout_marginTop="-100dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_dice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
