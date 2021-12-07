@@ -3,4 +3,6 @@
     <string name="cost_of_service">Cost of Service</string>
     <string name="service_question">How was the service?</string>
     <string name="round_up">Round up tip?</string>
+    <string name="tip_amount">Tip Amount: %s</string>
+    <string name="tip_amount_default">Tip Amount</string>
 </resources>
