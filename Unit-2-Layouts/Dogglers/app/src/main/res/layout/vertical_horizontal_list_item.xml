@@ -34,6 +34,7 @@
             android:fontFamily="@font/aclonica"
             android:layout_marginStart="@dimen/margin_small"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/text_display"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_view_dog_photo"
             tools:text="Dog's Name: Scratchy "/>
@@ -43,11 +44,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_standard"
             android:fontFamily="@font/abeezee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_dog_name"
+            android:paddingBottom="@dimen/margin_standard"
             tools:text="Dog's Age : 11" />
 
         <TextView
@@ -56,11 +58,12 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_standard"
             android:fontFamily="@font/abeezee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_dog_name"
+            android:paddingBottom="@dimen/margin_high"
             tools:text="Dog's Hobbies : Eat" />
 
 

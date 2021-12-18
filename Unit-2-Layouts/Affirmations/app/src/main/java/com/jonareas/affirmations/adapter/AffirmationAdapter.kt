@@ -13,15 +13,14 @@ class AffirmationAdapter(
     private val list: List<Affirmation> = Datasource.loadAffirmations()
 ) : RecyclerView.Adapter<AffirmationAdapter.AffirmationViewHolder>() {
 
-
     inner class AffirmationViewHolder(private val binding: ItemAffirmationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(affirmation : Affirmation) = binding.run {
-                affirmationTitle.text = context.resources.getString(affirmation.stringResourceId)
-                affirmationImage.setImageResource(affirmation.imageResourceId)
-            }
-
+        fun bind(affirmation: Affirmation) = binding.run {
+            affirmationTitle.text = context.resources.getString(affirmation.stringResourceId)
+            affirmationImage.setImageResource(affirmation.imageResourceId)
         }
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AffirmationViewHolder =
         ItemAffirmationBinding
@@ -32,4 +31,5 @@ class AffirmationAdapter(
         list[position].run(holder::bind)
 
     override fun getItemCount(): Int = list.size
+
 }
