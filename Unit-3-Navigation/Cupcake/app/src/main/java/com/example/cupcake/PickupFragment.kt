@@ -21,6 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.cupcake.databinding.FragmentPickupBinding
 
 /**
@@ -53,9 +54,8 @@ class PickupFragment : Fragment() {
     /**
      * Navigate to the next screen to see the order summary.
      */
-    fun goToNextScreen() {
-        Toast.makeText(activity, "Next", Toast.LENGTH_SHORT).show()
-    }
+    private fun goToNextScreen() : Unit =
+        findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
 
     /**
      * This fragment lifecycle method is called when the view hierarchy associated with the fragment
