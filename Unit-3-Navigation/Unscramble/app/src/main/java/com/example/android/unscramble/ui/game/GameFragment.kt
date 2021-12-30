@@ -4,8 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.android.unscramble.GameViewModel
 import com.example.android.unscramble.R
 import com.example.android.unscramble.databinding.GameFragmentBinding
 import com.example.android.unscramble.ui.game.MAX_NO_OF_WORDS
@@ -31,7 +33,8 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout XML file and return a binding object instance
-        binding = GameFragmentBinding.inflate(inflater, container, false)
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
         Log.d("GameFragment", "GameFragment created/re-created!")
         Log.d("GameFragment", "Word: ${viewModel.currentScrambledWord} " +
                 "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}")
@@ -44,33 +47,16 @@ class GameFragment : Fragment() {
         // Setup a click listener for the Submit and Skip buttons.
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
-        // Update the UI
-//        updateNextWordOnScreen()
-//        binding.score.text = getString(R.string.score, 0)
-//        binding.wordCount.text = getString(
-//            R.string.word_count, 0, MAX_NO_OF_WORDS)
 
-        viewModel.currentScrambledWord.observe(
-            viewLifecycleOwner, {
-                newWord ->
-                    binding.textViewUnscrambledWord.text = newWord
-            }
-        )
 
-        viewModel.score.observe(
-            viewLifecycleOwner, {
-                newScore ->
-                binding.score.text = getString(R.string.score, newScore)
-            }
-        )
+        binding.gameViewModel = viewModel
 
-        viewModel.currentWordCount.observe (
-            viewLifecycleOwner, {
-                newWordCount ->
-                    binding.wordCount.text = getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
-            }
-                )
+        binding.maxNoOfWords = MAX_NO_OF_WORDS
+
+        binding.lifecycleOwner = viewLifecycleOwner
     }
+
+
 
     /*
     * Checks the user's word, and updates the score accordingly.
