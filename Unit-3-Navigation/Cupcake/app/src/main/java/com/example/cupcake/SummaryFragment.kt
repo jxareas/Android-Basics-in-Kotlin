@@ -22,6 +22,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.cupcake.databinding.FragmentSummaryBinding
 import com.example.cupcake.model.OrderViewModel
 
@@ -59,6 +60,10 @@ class SummaryFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
     }
+
+    fun cancelOrder() : Unit =
+        findNavController().navigate(R.id.action_summaryFragment_to_startFragment)
+
 
     /**
      * Submit the order by sharing out the order details to another app via an implicit intent.

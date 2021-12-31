@@ -102,6 +102,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/subtotal" />
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="@{() -> pickupFragment.cancelOrder()}"
+                app:layout_constraintTop_toBottomOf="@id/next_button"
+                style="?attr/materialButtonOutlinedStyle"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
