@@ -15,6 +15,7 @@
  */
 package com.example.cupcake
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.example.cupcake.databinding.FragmentSummaryBinding
 import com.example.cupcake.model.OrderViewModel
@@ -68,9 +71,42 @@ class SummaryFragment : Fragment() {
     /**
      * Submit the order by sharing out the order details to another app via an implicit intent.
      */
-    fun sendOrder() {
-        Toast.makeText(activity, "Send Order", Toast.LENGTH_SHORT).show()
+    fun sendOrder() : Unit = { livedata : LiveData<*> -> livedata.value.toString() }.let {
+        val orderSummary = getString(
+            R.string.order_details,
+            it(sharedViewModel.quantity),
+            it(sharedViewModel.flavor),
+            it(sharedViewModel.date),
+            it(sharedViewModel.price),
+        )
+
+        val intent = Intent(Intent.ACTION_SEND)
+            .setType("text/plain")
+            .putExtra(Intent.EXTRA_SUBJECT, getString(R.string.new_cupcake_order))
+            .putExtra(Intent.EXTRA_TEXT, orderSummary)
+
+        if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
+            startActivity(intent)
+        }
     }
+
+
+//        getString(
+//            R.string.order_details,
+//            valueToString(quantity),
+//            valueToString(flavor),
+//            valueToString(date),
+//            valueToString(price)
+//        )
+
+
+
+
+//    private fun<T> valueToString(liveData : LiveData<T>) = liveData.value.toString()
+
+
+
+
 
     /**
      * This fragment lifecycle method is called when the view hierarchy associated with the fragment
@@ -80,4 +116,19 @@ class SummaryFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
+
+
+
+
+
+//        val orderSummary = getString()
+//
+//        val orderSummary = getString(
+//            R.string.order_details,
+//            sharedViewModel.quantity.value.toString(),
+//            sharedViewModel.flavor.value.toString(),
+//            sharedViewModel.date.value.toString(),
+//            sharedViewModel.price.value.toString()
+//        )
+//    }
 }
