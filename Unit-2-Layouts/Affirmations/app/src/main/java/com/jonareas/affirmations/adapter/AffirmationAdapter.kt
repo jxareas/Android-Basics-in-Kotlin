@@ -25,7 +25,8 @@ class AffirmationAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AffirmationViewHolder =
         ItemAffirmationBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-            .let { AffirmationViewHolder(it) }
+            .let {
+                AffirmationViewHolder(it) }
 
     override fun onBindViewHolder(holder: AffirmationViewHolder, position: Int) =
         list[position].run(holder::bind)
