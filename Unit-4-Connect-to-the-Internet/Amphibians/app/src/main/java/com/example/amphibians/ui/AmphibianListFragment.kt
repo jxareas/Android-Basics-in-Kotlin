@@ -23,11 +23,11 @@ class AmphibianListFragment : Fragment() {
         // TODO: call the view model method that calls the amphibians api
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = AmphibianListAdapter(AmphibianListener { amphibian ->
+        binding.recyclerView.adapter = AmphibianListAdapter{ amphibian ->
             viewModel.onAmphibianClicked(amphibian)
             findNavController()
                 .navigate(R.id.action_amphibianListFragment_to_amphibianDetailFragment)
-        })
+        }
         viewModel.getAmphibianList()
 
         // Inflate the layout for this fragment

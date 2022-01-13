@@ -8,7 +8,7 @@
             type="com.example.amphibians.network.Amphibian" />
         <variable
             name="clickListener"
-            type="com.example.amphibians.ui.AmphibianListener" />
+            type="com.example.amphibians.ui.AmphibianListAdapter.OnAmphibianClicked" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -27,13 +27,17 @@ import com.example.amphibians.network.Amphibian
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class AmphibianListAdapter(val clickListener: AmphibianListener) :
+class AmphibianListAdapter(val clickListener: OnAmphibianClicked) :
     ListAdapter<Amphibian, AmphibianListAdapter.AmphibianViewHolder>(DiffCallback) {
+
+    fun interface OnAmphibianClicked {
+        fun onClick(amphibian: Amphibian)
+    }
 
     class AmphibianViewHolder(
         var binding: ListViewItemBinding
         ) : RecyclerView.ViewHolder(binding.root){
-        fun bind(clickListener: AmphibianListener, amphibian: Amphibian) {
+        fun bind(clickListener: OnAmphibianClicked, amphibian: Amphibian) {
             binding.amphibian = amphibian
             binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -65,6 +69,4 @@ class AmphibianListAdapter(val clickListener: AmphibianListener) :
     }
 }
 
-class AmphibianListener(val clickListener: (amphibian: Amphibian) -> Unit) {
-    fun onClick(amphibian: Amphibian) = clickListener(amphibian)
-}
+
