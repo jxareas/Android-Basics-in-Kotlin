@@ -1,10 +1,11 @@
-package com.example.inventory
+package com.example.inventory.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import com.example.inventory.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
