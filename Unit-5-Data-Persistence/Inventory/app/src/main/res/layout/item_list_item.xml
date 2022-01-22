@@ -26,12 +26,13 @@
         android:id="@+id/item_name"
         style="@style/Widget.Inventory.ListItemTextView"
         android:layout_width="180dp"
+        android:paddingStart="16dp"
         android:layout_marginStart="@dimen/margin_between_elements"
         android:fontFamily="sans-serif"
         app:layout_constraintEnd_toStartOf="@+id/item_price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Cogs and Widgets" />
+        tools:text="@tools:sample/full_names" />
 
     <TextView
         android:id="@+id/item_price"
