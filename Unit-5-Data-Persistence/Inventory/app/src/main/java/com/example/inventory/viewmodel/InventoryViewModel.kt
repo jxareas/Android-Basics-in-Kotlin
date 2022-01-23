@@ -14,10 +14,30 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
     val allItems: LiveData<List<Item>> = itemDao.getItems().asLiveData()
 
     private fun insertItem(item: Item) {
-        viewModelScope.launch {
-            itemDao.insert(item)
+        viewModelScope.launch { itemDao.insert(item) }
+    }
+
+    private fun updateItem(item : Item) {
+            viewModelScope.launch { itemDao.update(item) }
+    }
+
+    fun sellItem(item: Item) {
+        if (item.quantityInStock > 0) {
+            val newItem = item.copy(quantityInStock =  item.quantityInStock - 1)
+            updateItem(newItem)
         }
     }
+
+
+    fun deleteItem(item: Item) {
+        viewModelScope.launch { itemDao.delete(item) }
+    }
+
+    fun isStockAvailable(item: Item): Boolean =
+        item.quantityInStock > 0
+
+    fun retrieveItem(itemId : Int) : LiveData<Item> =
+        itemDao.getItem(itemId).asLiveData()
 
     private fun getNewItemEntry(name : String, price : String, quantity : String) : Item =
         Item(itemName = name, itemPrice = price.toDouble(), quantityInStock = quantity.toInt())
