@@ -9,6 +9,7 @@ import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.AppNavigatorImpl
 import com.example.android.hilt.util.DateFormatter
 
+// This class is no longer used
 class ServiceLocator(applicationContext: Context) {
 
     private val logsDatabase = Room.databaseBuilder(
